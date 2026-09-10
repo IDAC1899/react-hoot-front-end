@@ -29,7 +29,11 @@ const HootForm = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log('formData', formData);
+    if (hootId) {
+      props.handleUpdateHoot(hootId, formData);
+    } else {
+      props.handleAddHoot(formData);
+    }
   };
 
   return (

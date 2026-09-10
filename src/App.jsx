@@ -34,6 +34,11 @@ const App = () => {
     navigate('/hoots');
   };
 
+  const handleUpdateHoot = async (hootId, hootFormData) => {
+    console.log('hootId:', hootId, 'hootFormData:', hootFormData);
+    navigate(`/hoots/${hootId}`);
+  };
+
   const handleDeleteHoot = async (hootId) => {
     const deletedHoot = await hootService.deleteHoot(hootId);
     setHoots(hoots.filter((hoot) => hoot._id !== deletedHoot._id));
