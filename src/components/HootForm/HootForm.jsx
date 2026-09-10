@@ -1,8 +1,10 @@
 // src/components/HootForm/HootForm.jsx
 
 import { useState } from 'react';
+import { useParams } from 'react-router';
 
 const HootForm = (props) => {
+  const { hootId } = useParams();
   const [formData, setFormData] = useState({
     title: '',
     text: '',
@@ -15,11 +17,12 @@ const HootForm = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    props.handleAddHoot(formData);
+    console.log('formData', formData);
   };
 
   return (
     <main>
+      <h1>{hootId ? 'Edit Hoot' : 'New Hoot'}</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor='title-input'>Title</label>
         <input

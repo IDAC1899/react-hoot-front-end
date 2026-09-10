@@ -57,6 +57,10 @@ const App = () => {
               path='/hoots/new'
               element={<HootForm handleAddHoot={handleAddHoot} />}
             />
+            <Route
+              path='/hoots/:hootId/edit'
+              element={<HootForm />}
+            />
           </>
         ) : (
           <>
