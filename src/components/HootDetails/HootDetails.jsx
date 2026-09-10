@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 
+import CommentForm from '../CommentForm/CommentForm';
+
 import * as hootService from '../../services/hootService';
 
 const HootDetails = () => {
@@ -34,6 +36,7 @@ const HootDetails = () => {
       </section>
       <section>
         <h2>Comments</h2>
+        <CommentForm />
 
         {!hoot.comments.length && <p>There are no comments.</p>}
 
