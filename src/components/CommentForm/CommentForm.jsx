@@ -11,7 +11,7 @@ const CommentForm = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log('formData', formData);
+    props.handleAddComment(formData);
     setFormData({ text: '' });
   };
 

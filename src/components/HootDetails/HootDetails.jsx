@@ -19,6 +19,11 @@ const HootDetails = () => {
     fetchHoot();
   }, [hootId]);
 
+  const handleAddComment = async (commentFormData) => {
+    const newComment = await hootService.createComment(hootId, commentFormData);
+    setHoot({ ...hoot, comments: [...hoot.comments, newComment] });
+  };
+
   if (!hoot) return <main>Loading...</main>;
 
   return (
@@ -36,7 +41,7 @@ const HootDetails = () => {
       </section>
       <section>
         <h2>Comments</h2>
-        <CommentForm />
+        <CommentForm handleAddComment={handleAddComment} />
 
         {!hoot.comments.length && <p>There are no comments.</p>}
 
