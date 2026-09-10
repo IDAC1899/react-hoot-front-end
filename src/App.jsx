@@ -35,7 +35,9 @@ const App = () => {
   };
 
   const handleDeleteHoot = async (hootId) => {
-    console.log('hootId', hootId);
+    const deletedHoot = await hootService.deleteHoot(hootId);
+    setHoots(hoots.filter((hoot) => hoot._id !== deletedHoot._id));
+    navigate('/hoots');
   };
 
   return (
