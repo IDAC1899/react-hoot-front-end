@@ -29,8 +29,9 @@ const App = () => {
     if (user) fetchAllHoots();
   }, [user]);
 
-  const handleAddHoot = async (hootFormData) => {
-    console.log('hootFormData', hootFormData);
+   const handleAddHoot = async (hootFormData) => {
+    const newHoot = await hootService.create(hootFormData);
+    setHoots([newHoot, ...hoots]);
     navigate('/hoots');
   };
 
