@@ -1,14 +1,17 @@
 // src/components/HootDetails/HootDetails.jsx
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router';
 
 import CommentForm from '../CommentForm/CommentForm';
 
 import * as hootService from '../../services/hootService';
 
-const HootDetails = () => {
+import { UserContext } from '../../contexts/UserContext';
+
+const HootDetails = (props) => {
   const { hootId } = useParams();
+  const { user } = useContext(UserContext);
   const [hoot, setHoot] = useState(null);
 
   useEffect(() => {
@@ -36,6 +39,13 @@ const HootDetails = () => {
             {`${hoot.author.username} posted on
             ${new Date(hoot.createdAt).toLocaleDateString()}`}
           </p>
+          {hoot.author._id === user._id && (
+            <>
+              <button onClick={() => props.handleDeleteHoot(hootId)}>
+                Delete
+              </button>
+            </>
+          )}
         </header>
         <p>{hoot.text}</p>
       </section>
