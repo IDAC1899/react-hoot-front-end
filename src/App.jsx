@@ -35,7 +35,8 @@ const App = () => {
   };
 
   const handleUpdateHoot = async (hootId, hootFormData) => {
-    console.log('hootId:', hootId, 'hootFormData:', hootFormData);
+    const updatedHoot = await hootService.update(hootId, hootFormData);
+    setHoots(hoots.map((hoot) => (hootId === hoot._id ? updatedHoot : hoot)));
     navigate(`/hoots/${hootId}`);
   };
 
